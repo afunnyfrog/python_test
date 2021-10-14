@@ -9,6 +9,7 @@ bot = commands.Bot(commands_prefix="f!")
 async def on_ready():
     print(">>bot is online<<")
 
-
+@bot.event
+async def on_member():
 
 bot.run("ODc2NzI5MTc0NTMyOTU2MTYw.YRoTrA.Wg4eDQwarrPnkh4dj5A6WG5GgJg")
