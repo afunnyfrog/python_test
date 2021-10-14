@@ -18,6 +18,7 @@ async def on_member_join(member):
 
 @bot.event
 async def on_member_remove(member):
-    print(f'{member} leave！')
+    channel = bot.get_channel(898159634911752212)
+    await channel.send(f'{member} 趕快走吧呱呱')
 
 bot.run("ODc2NzI5MTc0NTMyOTU2MTYw.YRoTrA.Wg4eDQwarrPnkh4dj5A6WG5GgJg")
