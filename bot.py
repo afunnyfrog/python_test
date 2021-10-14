@@ -1,6 +1,5 @@
 import discord
-From discord.ext
- import commands
+From discord.ext import commands
 
 
 bot = commands.Bot(commands_prefix="f!")
