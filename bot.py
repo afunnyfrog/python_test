@@ -5,7 +5,7 @@ import json
 
 
 with open("setting.json",mode="r",encoding="utf8") as jfile:
-
+    jdata =json,json.load(jfile)
 
 intents = discord.Intents.all()
 
@@ -21,14 +21,14 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     print("welcome")
-    channel = bot.get_channel(898159587922935869)
+    channel = bot.get_channel(int(jdata["Welcome_channel"]))
     await channel.send(f'{member} 歡迎你進來呱呱')
 #歡迎訊息
 
 @bot.event
 async def on_member_remove(member):
     print("byebye")
-    channel = bot.get_channel(898159634911752212)
+    channel = bot.get_channel(int(jdata["Leave_channel"]))
     await channel.send(f'{member} 趕快走吧呱呱')
 #再見訊息
 
@@ -39,4 +39,4 @@ async def ping(ctx):
 
 
 
-bot.run("ODc2NzI5MTc0NTMyOTU2MTYw.YRoTrA.Wg4eDQwarrPnkh4dj5A6WG5GgJg")
+bot.run(jdata["TOKEN"])
