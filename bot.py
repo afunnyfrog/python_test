@@ -2,8 +2,8 @@ import discord
 from discord import channel
 from discord.ext import commands
 
-intents = discord.Intents.default()
-intents.members = True
+intents = discord.Intents.all()
+
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('f!'),intents = intents)
 #定義呼叫機器人的命令字首
