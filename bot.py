@@ -4,8 +4,9 @@ from discord.ext import commands
 import json 
 
 
-with open("setting.json",mode="r",encoding="utf8") as jfile:
-    jdata =json,json.load(jfile)
+with open('setting.json',mode='r',encoding='utf8') as jfile:
+    jdata =json.load(jfile)
+    
 
 intents = discord.Intents.all()
 
@@ -20,14 +21,12 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    print("welcome")
     channel = bot.get_channel(int(jdata["Welcome_channel"]))
     await channel.send(f'{member} 歡迎你進來呱呱')
 #歡迎訊息
 
 @bot.event
 async def on_member_remove(member):
-    print("byebye")
     channel = bot.get_channel(int(jdata["Leave_channel"]))
     await channel.send(f'{member} 趕快走吧呱呱')
 #再見訊息
@@ -38,5 +37,4 @@ async def ping(ctx):
 #對話時機器人的延遲
 
 
-
-bot.run(jdata["TOKEN"])
+bot.run(jdata["Token"])
