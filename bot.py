@@ -39,7 +39,13 @@ async def ping(ctx):
 
 @bot.command()
 async def 圖片(ctx):
-    pic = discord.File(jdata["pic"])
+    random_pic=random.choice(jdata["pic"])
+    pic = discord.File(random_pic)
     await ctx.send(file=pic)
+
+@bot.command()
+async def 貓咪(ctx):
+    random_pic=random.choice(jdata["url_pic"])
+    await ctx.send(random_pic)
 
 bot.run(jdata["Token"])
