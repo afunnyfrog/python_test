@@ -2,7 +2,8 @@ import discord
 from discord import channel
 from discord.ext import commands
 import json 
-
+import random
+ 
 
 with open('setting.json',mode='r',encoding='utf8') as jfile:
     jdata =json.load(jfile)
@@ -36,5 +37,9 @@ async def ping(ctx):
     await ctx.send(f'{round(bot.latency*1000)}(ms)')
 #對話時機器人的延遲
 
+@bot.command()
+async def 圖片(ctx):
+    pic = discord.File(jdata["pic"])
+    await ctx.send(file=pic)
 
 bot.run(jdata["Token"])
