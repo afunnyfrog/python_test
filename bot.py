@@ -3,6 +3,7 @@ from discord import channel
 from discord.ext import commands
 import json 
 import random
+import os
  
 
 with open('setting.json',mode='r',encoding='utf8') as jfile:
@@ -12,7 +13,7 @@ with open('setting.json',mode='r',encoding='utf8') as jfile:
 intents = discord.Intents.all()
 
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('f!'),intents = intents)
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('F!'),intents = intents)
 #定義呼叫機器人的命令字首
 
 @bot.event
@@ -33,19 +34,24 @@ async def on_member_remove(member):
 #再見訊息
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send(f'{round(bot.latency*1000)}(ms)')
-#對話時機器人的延遲
+async def load(ctx,extension):
+    bot.load_extension(f"cmds.{extension}")
+    await ctx.send(f"loaded {extension}done.")
 
 @bot.command()
-async def 圖片(ctx):
-    random_pic=random.choice(jdata["pic"])
-    pic = discord.File(random_pic)
-    await ctx.send(file=pic)
+async def unload(ctx,extension):
+    bot.unload_extension(f"cmds.{extension}")
+    await ctx.send(f"un-loaded {extension}done.")
 
 @bot.command()
-async def 貓咪(ctx):
-    random_pic=random.choice(jdata["url_pic"])
-    await ctx.send(random_pic)
+async def reload(ctx,extension):
+    bot.reload_extension(f"cmds.{extension}")
+    await ctx.send(f"re-loaded {extension}done.")
 
-bot.run(jdata["Token"])
+for filename in os.listdir("./cmds"):
+    if filename.endswith(".py"):
+        bot.load_extension(f"cmds.{filename[:-3]}")
+
+
+if __name__ == "__main__":
+    bot.run(jdata["Token"])
