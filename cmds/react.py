@@ -5,8 +5,8 @@ from core.classes import Cog_Extension
 import random
 import json 
 
-with open('setting.json',mode='r',encoding='utf8') as jfile:
-    jdata =json.load(jfile)
+with open ('setting.json',mode="r",encoding='utf8') as jfile:
+    jdata=json.load(jfile)
 
 class React(Cog_Extension):
     @commands.command()
