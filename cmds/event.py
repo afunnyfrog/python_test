@@ -21,12 +21,13 @@ class Event(Cog_Extension):
         await channel.send(f'{member} 趕快走吧呱呱')
 #再見訊息 
 
+   
+
     @commands.Cog.listener()
     async def on_message(self, msg):
         keyword = jdata["Keyword"]
-        if msg.content in keyword:
-            await msg.channel.send("？？？")
-
+        if msg.content in keyword and msg.author != self.bot.user:
+            await msg.channel.send("找我有事嗎owo")
 
 def setup(bot):
     bot.add_cog(Event(bot))
