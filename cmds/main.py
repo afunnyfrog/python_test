@@ -31,5 +31,14 @@ class Main(Cog_Extension):
         embed.add_field(name="4", value="1234", inline=True)
         await ctx.send(embed=embed)
 
+    @commands.command()
+    async def sayd(self,ctx,*,msg):
+        await ctx.message.delete()
+        await ctx.send(msg)
+
+    @commands.command()
+    async def clean(self,ctx,num:int):
+        await ctx.channel.purge(limit=num+1)
+
 def setup(bot):
     bot.add_cog(Main(bot))
