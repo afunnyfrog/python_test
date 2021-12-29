@@ -16,7 +16,7 @@ class Task(Cog_Extension):
                 await self.channel.send('呱，我在')
                 await asyncio.sleep(5)#單位：秒
 
-        self.bg_task=self.bot.loop.creat_task(interval())
+        self.bg_task=self.bot.loop.create_task(interval())
 
 def setup(bot):
     bot.add_cog(Task(bot))
