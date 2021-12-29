@@ -7,7 +7,7 @@ import json,asyncio,datetime
 
 class Task(Cog_Extension):
     def __init__(self,*args,**kwargs):
-        super().__init_(*args,**kwargs)
+        super().__init__(*args,**kwargs)
         
         async def interval():
             await self.bot.wait_untial_ready()
