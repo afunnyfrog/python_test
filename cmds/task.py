@@ -10,7 +10,7 @@ class Task(Cog_Extension):
         super().__init__(*args,**kwargs)
         
         async def interval():
-            await self.bot.wait_untial_ready()
+            await self.bot.wait_until_ready()
             self.channel = self.bot.get_channel(920930478729596928) 
             while not self.bot.is_cloesd():
                 await self.channel.send('呱，我在')
