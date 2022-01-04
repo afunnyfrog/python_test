@@ -7,6 +7,7 @@ from datetime import datetime,timezone,timedelta
 from datetime import datetime, timedelta, timezone
 utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)
 time =utc_dt.strftime("%Y-%m-%d %H:%M:%S")
+
 class Main(Cog_Extension):
     @commands.command()
     async def ping(self,ctx):

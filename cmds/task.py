@@ -11,12 +11,17 @@ class Task(Cog_Extension):
         
         async def interval():
             await self.bot.wait_until_ready()
-            self.channel = self.bot.get_channel(920930478729596928) 
-            while not self.bot.is_cloesd():
+            self.channel = self.bot.get_channel(920930478729596928)
+            while not self.bot.is_closed():
                 await self.channel.send('呱，我在')
                 await asyncio.sleep(5)#單位：秒
 
-        self.bg_task=self.bot.loop.create_task(interval())
+        self.bg_task = self.bot.loop.create_task(interval())
+ 
+    @commands.command()
+    async def set_channel(self,ctx,ch:int):
+        self.channel = self.bot.get_channel(ch) 
+        await ctx.send(f'設定頻道:{self.channel.mention}')
 
 def setup(bot):
     bot.add_cog(Task(bot))
