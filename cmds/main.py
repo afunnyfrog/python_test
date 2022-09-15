@@ -3,6 +3,7 @@ from discord import channel
 from discord.ext import commands
 from core.classes import Cog_Extension
 from datetime import datetime,timezone,timedelta
+import random
 
 from datetime import datetime, timedelta, timezone
 utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)
@@ -39,6 +40,39 @@ class Main(Cog_Extension):
     @commands.command()
     async def clean(self,ctx,num:int):
         await ctx.channel.purge(limit=num+1)
+
+    @commands.command()
+    async def rand_squad(self,ctx):
+
+        online=[]
+
+        for member in ctx.guild.members:
+            print(member,member.status)
+            if str(member.status) == "online" and member.bot == False:
+                online.append(member.name)
+
+        randon_online=random.sample(online,k=20)
+        for squad in range(4):
+            group=random.sample(randon_online,k=5)
+            await ctx.send(f"第{squad+1}小隊：",str(group))
+            for name in group:
+                randon_online.remove(name)
+
+    @commands.group()
+    async def 顏文字(self,ctx):
+        pass
+
+    @顏文字.command()
+    async def owob(self,ctx):
+        await ctx.send("owob")     
+
+    @顏文字.command()
+    async def ouob(self,ctx):
+        await ctx.send("ouob")   
+
+    @顏文字.command()
+    async def ovob(self,ctx):
+        await ctx.send("ovob")   
 
 def setup(bot):
     bot.add_cog(Main(bot))
