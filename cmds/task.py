@@ -4,17 +4,19 @@ from discord.ext import commands
 from core.classes import Cog_Extension
 import random
 import json,asyncio,datetime
-
+with open('setting.json',mode='r',encoding='utf8') as jfile:
+    jdata =json.load(jfile)
 class Task(Cog_Extension):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         
         async def interval():
+            user_id=927316051887276082
             await self.bot.wait_until_ready()
-            self.channel = self.bot.get_channel(920930478729596928)
+            self.channel = self.bot.get_channel(927359811081871470)
             while not self.bot.is_closed():
-                await self.channel.send('呱，我在')
-                await asyncio.sleep(5)#單位：秒
+                await self.channel.send(f"disconect")
+                await asyncio.sleep(60)#單位：秒
 
         self.bg_task = self.bot.loop.create_task(interval())
  
@@ -25,4 +27,3 @@ class Task(Cog_Extension):
 
 def setup(bot):
     bot.add_cog(Task(bot))
-  

@@ -27,7 +27,8 @@ class Event(Cog_Extension):
     async def on_message(self, msg):
         keyword = jdata["Keyword"]
         if msg.content in keyword and msg.author != self.bot.user:
-            await msg.channel.send("找我有事嗎owo")
+            await msg.channel.send(jdata["呱"])
+            
 
 def setup(bot):
     bot.add_cog(Event(bot))

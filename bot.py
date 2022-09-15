@@ -24,7 +24,7 @@ async def on_ready():
 
 for filename in os.listdir("./cmds"):
     if filename.endswith(".py"):
-        bot.load_extension(f"cmds.{filename[:-3]}")
+         bot.load_extension(f"cmds.{filename[:-3]}")
 
 @bot.command()
 async def load(ctx,extension):
