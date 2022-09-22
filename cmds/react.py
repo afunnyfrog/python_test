@@ -24,11 +24,15 @@ class React(Cog_Extension):
     @commands.command()
     async def 猜顏色(slef,ctx):
         color = ("#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
-        print(color)
+        await ctx.send(1)
         hex = color.lstrip('#')
+        await ctx.send(2)
         rgb= tuple(int(hex[i:i+2], 16) for i in (0, 2, 4))
+        await ctx.send(3)
         image = Image.new("RGB",(500,500),rgb)
-        await ctx.send(image)
+        await ctx.send(4)
+        await ctx.send(image.show())
+        await ctx.send(5)
 
 def setup(bot):
     bot.add_cog(React(bot))
